@@ -64,7 +64,7 @@ function createEle(tag = 'div', name = false, type = false) {
 function init() {
 	let jsonTextDiv = createEle('div', 'json')
 	jsonTextDiv.textContent = JSON.stringify(datas)
-	document.body.appenChild(jsonTextDiv)
+	document.body.appendChild(jsonTextDiv)
 }
 window.onload = () => { init() }
 
