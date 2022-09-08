@@ -56,3 +56,23 @@ let datas = {
 		dice: { ico: '🎲', name: 'Game Dice' },
 	},
 }
+function createEle(tag = 'div', name = false, type = false) {
+	let ele = document.createElement(tag)
+	if (name) { if (!type) { ele.className = name } else { ele.id = name } }
+	return ele
+}
+function init() {
+	let jsonTextDiv = createEle('div', 'json')
+	jsonTextDiv.textContent = JSON.stringify(datas)
+	document.body.appenChild(jsonTextDiv)
+}
+window.onload = () => { init() }
+
+
+
+
+
+
+
+
+
