@@ -1,50 +1,22 @@
 
 let datas = {
-	v: 15,
-	types: {
-		0: "Tower",
-		1: "Npc",
-		2: "Container",
-		3: "Quest Item",
-		4: 'Raid Entrance',
-		5: 'Flora',
-		6: 'Fauna'
-	},
-	maps: [
-		{
-			id: 0,
-			name: 'central Mountains',
-			origin: { x: 50, y: 50, z: 0 },
-			width: 1450, height: 1195,
-			src: 'central_mountain.jpg',
-			alt: "central mountain"
-		},
-		{
-			id: 1,
-			name: 'Daisy Desert',
-			origin: { x: 50, y: 50, z: 5 },
-			width: 1450, height: 1195,
-			src: 'central_mountain.jpg',
-			alt: "central mountain"
-		}
-	],
-	poi: [
-		{
-			mapid: 0,
-			type: 0,
-			pos: { x: 432, y: 751, z: 0 },
-			name: "Black Knight",
-			shop: true,
-			quest: true
-		},
-		{
-			mapid: 0,
-			type: 1,
-			pos: { x: 200, y: 685, z: 0 },
-			name: "bob",
-			shop: true,
-			quest: true
-		}
+	v: 1,
+	types: [
+		{ name: "Tower", ico: 'tower' },
+		{ name: "Npc", ico: 'npc' },
+		{ name: "NpcQuest", ico: 'npcquest' },
+		{ name: "Quest", ico: 'quest' },
+		{ name: "Quest Item", ico: 'questitem' },
+		{ name: 'Raid Entrance', ico: 'raid' },
+		{ name: 'Dungeon Entrance', ico: 'raid' },
+		{ name: 'Flora', ico: 'flora' },
+		{ name: 'Fauna', ico: 'fauna' },
+		{ name: 'Mine', ico: 'pick' },
+		{ name: 'Boss', ico: 'ogre' },
+		{ name: 'Fairy', ico: 'fairy' },
+		{ name: 'Fish', ico: 'fish' },
+		{ name: "Container", ico: 'oldkey' },
+		{ name: "Chest", ico: 'chest' },
 	],
 	ico: {
 		oldkey: { ico: '🗝️', name: 'Old Key' },
@@ -54,25 +26,70 @@ let datas = {
 		shield: { ico: '🛡️', name: 'Shield' },
 		staff: { ico: '⚚', name: 'Staff' },
 		dice: { ico: '🎲', name: 'Game Dice' },
+		poi: { ico: '🎲', name: 'poi' },
+		ogre: { ico: '👹', name: 'ogre' },
+		fairy: { ico: '🧚', name: 'Fairy' },
+		vampire: { ico: '🧛', name: 'Vampire' },
+		pick: { ico: '⛏️', name: 'pick' },
+		questitem: { ico: '❔', name: 'White Question Mark' },
+		quest: { ico: '❓', name: 'Red Question Mark' },
+		tower: { ico: '🗿', name: 'Maoi' },
+		npcquest: { ico: '⁉️', name: 'Exclamation Question Mark' },
+		npc: { ico: '❗', name: 'Red Exclamation Mark' },
+		raid: { ico: '⚔️', name: 'Crossed Swords' },
+		fauna: { ico: '🐻', name: 'Bear' },
+		flora: { ico: '🌼', name: 'Blossom' },
+		fish: { ico: '🐟', name: 'Fish' },
+		chest: { ico: '🧰', name: 'Toolbox' },
+
 	},
+	maps: [
+		{
+			id: 0,
+			name: 'Central Mountains',
+			width: 1450, height: 1195,
+			src: 'central_mountains.jpg',
+			alt: "Central Mountains"
+		},
+		{
+			id: 1,
+			name: 'Dyra Desert',
+			width: 1450, height: 1195,
+			src: 'dyra_desert.jpg',
+			alt: "Dyra Desert"
+		},
+		{
+			id: 2,
+			name: 'Darkess Village',
+			width: 1450, height: 1195,
+			src: 'darkess_village.jpg',
+			alt: "Darkess Village"
+		},
+		{
+			id: 3,
+			name: 'Champlonia',
+			width: 1450, height: 1195,
+			src: 'champlonia.jpg',
+			alt: "Champlonia"
+		},
+		{
+			id: 4,
+			name: 'King Mountains',
+			width: 1450, height: 1195,
+			src: 'king_mountains.jpg',
+			alt: "King Mountains"
+		}
+	],
+	poi: [
+		{
+			mapid: 1,
+			type: 1,
+			pos: { x: 482, y: 801, z: 0 },
+			name: "Black Knight",
+			comment: 'A lonely Knight in the middle of heat',
+			shop: true,
+			quest: true
+		},
+		{ mapid: 1, type: "11", "pos": { "x": "870", "y": "766", "z": 0 }, "name": "Fairy", "comment": "give me a Doll", "shop": false, "quest": false, "typeName": { "name": "Fairy", "ico": "fairy" }, "mapName": "Dyra Desert" },
+	],
 }
-function createEle(tag = 'div', name = false, type = false) {
-	let ele = document.createElement(tag)
-	if (name) { if (!type) { ele.className = name } else { ele.id = name } }
-	return ele
-}
-function init() {
-	let jsonTextDiv = createEle('div', 'json')
-	jsonTextDiv.textContent = JSON.stringify(datas)
-	document.body.appendChild(jsonTextDiv)
-}
-window.onload = () => { init() }
-
-
-
-
-
-
-
-
-
