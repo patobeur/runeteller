@@ -6,10 +6,155 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
-		<style></style>
-	</head>
-	<body>
 		<script src="datas.js"></script>
-  </body>
+		<script src="hell.js"></script>
+		<script src="main.js"></script>
+		<style>
+			:root {
+				--hnav: 33px;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: box-sizing;
+			}
+
+
+			#menu {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: var(--hnav);
+				background-color: black;
+				color: white;
+
+				display: flex;
+				justify-content: flex-start;
+			}
+
+			#menu-maps,
+			#menu-poi,
+			#menu-type,
+			#menu-ico {
+				width: max-content;
+				height: var(--hnav);
+				background-color: black;
+				color: white;
+			}
+
+			#menu-poi:hover>.poiitem,
+			#menu-maps:hover>.mapitem,
+			#menu-type:hover>.typeitem,
+			#menu-ico:hover>.icoitem {
+				width: max-content;
+				background-color: rgb(111, 9, 9);
+				display: block;
+			}
+
+			#menu-poi .poiitem,
+			#menu-maps .mapitem,
+			#menu-type .typeitem,
+			#menu-ico .icoitem {
+				display: none;
+			}
+
+			.maptitle,
+			.poititle,
+			.typetitle,
+			.icotitle {
+				width: min-content;
+				height: var(--hnav);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 0 5px;
+
+			}
+
+			#menu-poi #pois {
+				position: relative;
+				width: max-content;
+				background-color: rgb(161, 38, 38);
+				color: white;
+			}
+
+			.poiitem {
+				width: 100%;
+				background-color: rgb(38, 161, 56);
+				color: white;
+				padding: 5px;
+			}
+
+			#map {
+				position: relative;
+			}
+
+			.poi {
+				position: absolute;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				background-color: rgba(255, 255, 255, 0.34);
+				border: 1px solid black;
+			}
+
+			.poi::before {
+				position: absolute;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				background-color: rgba(47, 171, 36, 0.34);
+				content: " ";
+			}
+
+			.poi::after {
+				position: absolute;
+				content: "?";
+				top: -20px;
+				background-color: rgba(208, 204, 22, 0.34);
+			}
+
+			#board {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				top: 30px;
+				right: 0px;
+				background-color: rgba(208, 204, 22, 0.34);
+			}
+
+			#JsonTextarea {
+				width: 100%;
+				height: 200px
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="map"></div>
+		<div id="menu" class="toto">
+			<div id="menu-maps"></div>
+			<div id="menu-poi"></div>
+			<div id="menu-type"></div>
+			<div id="menu-ico"></div>
+		</div>
+		<div id="board">
+			Name : <input type="text" name="name" id="poiname" placeholder="name">
+			<p>Id : <span id="poiid">0</span></p>
+			Type <input type="number" name="poitype" id="poitype" placeholder="type number">
+			<p>Pos x: <span id="poiposx">0</span>px, y: <span id="poiposy">0</span>px</p>
+			<p>shop : <input id="poishop" type="checkbox"></p>
+			<p>quest : <input id="poiquest" type="checkbox"></p>
+			<textarea name="comment" id="poicomment"></textarea><br />
+			<button id="delete">delete</button>
+			<button id="update">update</button>
+		</div>
+		current datas<br />
+		<textarea name="json" id="JsonTextarea"></textarea>
+	</body>
 
 </html>
