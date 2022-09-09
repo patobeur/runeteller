@@ -46,24 +46,24 @@ let datas = {
 	maps: [
 		{
 			id: 0,
+			name: 'Darkess Village',
+			width: 1450, height: 1195,
+			src: 'darkess_village.jpg',
+			alt: "Darkess Village"
+		},
+		{
+			id: 1,
 			name: 'Central Mountains',
 			width: 1450, height: 1195,
 			src: 'central_mountains.jpg',
 			alt: "Central Mountains"
 		},
 		{
-			id: 1,
+			id: 2,
 			name: 'Dyra Desert',
 			width: 1450, height: 1195,
 			src: 'dyra_desert.jpg',
 			alt: "Dyra Desert"
-		},
-		{
-			id: 2,
-			name: 'Darkess Village',
-			width: 1450, height: 1195,
-			src: 'darkess_village.jpg',
-			alt: "Darkess Village"
 		},
 		{
 			id: 3,
@@ -82,7 +82,7 @@ let datas = {
 	],
 	poi: [
 		{
-			mapid: 1,
+			mapid: 2,
 			type: 1,
 			pos: { x: 482, y: 801, z: 0 },
 			name: "Black Knight",
@@ -90,6 +90,6 @@ let datas = {
 			shop: true,
 			quest: true
 		},
-		{ mapid: 1, type: "11", "pos": { "x": "870", "y": "766", "z": 0 }, "name": "Fairy", "comment": "give me a Doll", "shop": false, "quest": false, "typeName": { "name": "Fairy", "ico": "fairy" }, "mapName": "Dyra Desert" },
+		{ mapid: 2, type: "11", "pos": { "x": "870", "y": "766", "z": 0 }, "name": "Fairy", "comment": "give me a Doll", "shop": false, "quest": false, "typeName": { "name": "Fairy", "ico": "fairy" }, "mapName": "Dyra Desert" },
 	],
 }

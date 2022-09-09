@@ -87,7 +87,6 @@ function addItemsToPoiMenu() {
 }
 function addItemsToTypeMenu() {
 	let iter = 0;
-
 	RuneTellerDatas.types.forEach(
 		type => {
 			MenuType.appendChild(createTypeItem(iter, type))
