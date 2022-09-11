@@ -20,6 +20,13 @@
 				box-sizing: box-sizing;
 			}
 
+			body {
+				background-color: black;
+			}
+
+			#world {
+				background-color: rgb(74, 74, 74);
+			}
 
 			#menu {
 				position: fixed;
@@ -97,11 +104,16 @@
 				width: 15px;
 				height: 15px;
 				border-radius: 50%;
-				background-color: rgba(255, 255, 255, 0.34);
-				border: 1px solid black;
+				/* background-color: rgba(255, 255, 255, 0.34);*/
+				border: 1px solid rgba(0, 0, 0, 0.204);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				cursor: grab;
 			}
 
-			.poi::before {
+			/* .poi::before {
 				position: absolute;
 				width: 15px;
 				height: 15px;
@@ -115,15 +127,35 @@
 				content: "?";
 				top: -20px;
 				background-color: rgba(208, 204, 22, 0.34);
-			}
+			} */
 
 			#board {
 				position: absolute;
 				width: 200px;
-				height: 200px;
+				/* height: 200px; */
 				top: 30px;
 				right: 0px;
-				background-color: rgba(208, 204, 22, 0.34);
+				background-color: rgba(255, 255, 255, 0.941);
+				border-radius: .5rem;
+				padding: .5rem;
+			}
+
+			#poitools {
+				background-color: rgba(185, 255, 183, 0.941);
+				border-radius: .5rem;
+				padding: .5rem;
+
+			}
+
+			#mapinfo {
+				background-color: rgba(247, 255, 213, 0.941);
+				border-radius: .5rem;
+				padding: .5rem;
+
+			}
+
+			.fourdigit {
+				width: 4rem;
 			}
 
 			#JsonTextarea {
@@ -135,26 +167,54 @@
 	</head>
 
 	<body>
-		<div id="map"></div>
-		<div id="menu" class="toto">
-			<div id="menu-maps"></div>
-			<div id="menu-poi"></div>
-			<div id="menu-type"></div>
-			<div id="menu-ico"></div>
+		<div id="world">
+			<div id="map"></div>
+			<div id="menu" class="toto">
+				<div id="menu-maps"></div>
+				<div id="menu-poi"></div>
+				<div id="menu-type"></div>
+				<div id="menu-ico"></div>
+			</div>
+			<div id="board">
+				<div id="boardtitle">Board (close)</div>
+				<div id="poitools">POI<br>
+					Name : <input type="text" name="name" id="poiname" placeholder="name">
+					<p>Id : <span id="poiid">0</span></p>
+					Type <input type="number" name="poitype" id="poitype" placeholder="type number">
+					<p>Pos x: <input class="fourdigit" type="number" name="poiposx" id="poiposx"> px</p>
+					<p>Pos y: <input class="fourdigit" type="number" name="poiposy" id="poiposy"> px</p>
+					<p>Pos z: <input class="fourdigit" type="number" name="poiposz" id="poiposz"> px</p>
+					<p>shop : <input id="poishop" type="checkbox"> (true/false)</p>
+					<p>quest : <input id="poiquest" type="checkbox"> (true/false)</p>
+					<textarea name="comment" id="poicomment"></textarea><br />
+					<button id="delete">delete</button>
+					<button id="update">update</button>
+				</div>
+				<div id="mapinfo">MAP<br>
+					<p>MapId : <span id="mapid">false</span></p>
+					<p>Name : <input type="text" name="mapname" id="mapname" placeholder="mapname"></p>
+					<p>File Name : <input type="text" name="mapsrc" id="mapsrc" placeholder="picture.jpg"> (file are in
+						'runeteller_map' folder.)</p>
+					<p>Alt Text : <input type="text" name="mapalt" id="mapalt" placeholder="piture of ..."></p>
+					<p>width: <input class="fourdigit" type="number" name="mapwidth" id="mapwidth" placeholder="1450">
+						px
+					</p>
+					<p>height: <input class="fourdigit" type="number" name="mapheight" id="mapheight"
+							placeholder="1195">
+						px</p>
+
+					<p>spoil : <input id="mapspoil" type="checkbox"> (true/false)</p>
+					<button id="mapupdate">update</button>
+
+
+				</div>
+			</div>
+			<div id="json">
+				Current datas if you need to store and/or replace main.js file content<br />
+				<textarea name="json" id="JsonTextarea"></textarea>
+				u can past this in the code
+			</div>
 		</div>
-		<div id="board">
-			Name : <input type="text" name="name" id="poiname" placeholder="name">
-			<p>Id : <span id="poiid">0</span></p>
-			Type <input type="number" name="poitype" id="poitype" placeholder="type number">
-			<p>Pos x: <span id="poiposx">0</span>px, y: <span id="poiposy">0</span>px</p>
-			<p>shop : <input id="poishop" type="checkbox"></p>
-			<p>quest : <input id="poiquest" type="checkbox"></p>
-			<textarea name="comment" id="poicomment"></textarea><br />
-			<button id="delete">delete</button>
-			<button id="update">update</button>
-		</div>
-		current datas<br />
-		<textarea name="json" id="JsonTextarea"></textarea>
 	</body>
 
 </html>

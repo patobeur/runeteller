@@ -2,12 +2,23 @@
 function createMapImg() {
 	let img = document.createElement('img')
 	if (currentMap >= 0 && currentMap < RuneTellerDatas.maps.length) {
-		img.src = MapImagePath + RuneTellerDatas.maps[currentMap].src
-		// console.log(img)
+		let actualMap = RuneTellerDatas.maps[currentMap]
+		img.src = MapImagePath + (!spoil ? 'nospoil.jpg' : actualMap.src)
+		img.height = actualMap.height
+		img.width = actualMap.width
+		// map form  refresh
+		document.getElementById('mapname').value = actualMap.name
+		document.getElementById('mapheight').value = actualMap.height
+		document.getElementById('mapwidth').value = actualMap.width
+		document.getElementById('mapalt').value = actualMap.alt
+		document.getElementById('mapsrc').value = actualMap.src
+		document.getElementById('mapspoil').checked = actualMap.spoil ? 'checked' : '';
+
 	}
 	img.addEventListener('click', (e) => {
-		let h = RuneTellerDatas.maps[currentMap].height
-		let w = RuneTellerDatas.maps[currentMap].width
+		let actualMap = RuneTellerDatas.maps[currentMap]
+		let h = actualMap.height
+		let w = actualMap.width
 		let pos = {
 			x: e.pageX,
 			y: h - e.pageY,
@@ -36,8 +47,9 @@ function createMapImg() {
 }
 function formRefresh(index) {
 	document.getElementById('poiname').value = index.name
-	document.getElementById('poiposx').textContent = index.pos.x
-	document.getElementById('poiposy').textContent = index.pos.y
+	document.getElementById('poiposx').value = index.pos.x
+	document.getElementById('poiposy').value = index.pos.y
+	document.getElementById('poiposz').value = index.pos.z
 	document.getElementById('poishop').checked = index.shop ? 'checked' : '';
 	document.getElementById('poiquest').checked = index.quest ? 'checked' : '';
 	document.getElementById('poiid').textContent = index.id
@@ -52,9 +64,9 @@ function formUpdate() {
 		mapid: currentMap,
 		type: document.getElementById('poitype').value,
 		pos: {
-			x: document.getElementById('poiposx').textContent,
-			y: document.getElementById('poiposy').textContent,
-			z: 0
+			x: document.getElementById('poiposx').value,
+			y: document.getElementById('poiposy').value,
+			z: document.getElementById('poiposz').value
 		},
 		name: document.getElementById('poiname').value,
 		comment: document.getElementById('poicomment').value,
@@ -68,15 +80,30 @@ function formUpdate() {
 	displayPoiStuff()
 
 }
+function formDelete() {
+	// console.log(document.getElementById('poicomment').value)
+	let id = document.getElementById('poiid').textContent
+	console.log(RuneTellerDatas.poi)
+
+	console.log(id + ' deleted')
+	RuneTellerDatas.poi.splice(id, 1)
+	console.log(RuneTellerDatas.poi)
+	// RuneTellerDatas.poi[id] = newPoi
+	StorageRefresh()
+	displayMapAndMenus()
+	displayPoiStuff()
+
+}
 function addItemsToPoiMenu() {
 	let iter = 0
 	RuneTellerDatas.poi.forEach(
 		poi => {
+			poi.id = iter
 			if (poi.mapid === currentMap) {
-				poi.typeName = RuneTellerDatas.types[poi.type]
-				poi.mapName = RuneTellerDatas.maps[poi.mapid].name
+				// poi.typeName = RuneTellerDatas.types[poi.type]
+				// poi.mapName = RuneTellerDatas.maps[poi.mapid].name
 
-				let item = createPoiDiv(iter, poi)
+				let item = createPoiDiv(poi)
 				Map.appendChild(item)
 
 				MenuPoi.appendChild(createPoiItem(iter, poi))
@@ -87,12 +114,19 @@ function addItemsToPoiMenu() {
 }
 function addItemsToTypeMenu() {
 	let iter = 0;
-	RuneTellerDatas.types.forEach(
-		type => {
-			MenuType.appendChild(createTypeItem(iter, type))
-			iter++
-		}
-	);
+
+
+	for (var type in RuneTellerDatas.types) {
+
+		MenuType.appendChild(createTypeItem(iter, RuneTellerDatas.types[type]))
+		iter++
+	}
+	// RuneTellerDatas.types.forEach(
+	// 	type => {
+	// 		MenuType.appendChild(createTypeItem(iter, type))
+	// 		iter++
+	// 	}
+	// );
 }
 function addItemsToIcoMenu() {
 	let iter = 0;
@@ -108,8 +142,8 @@ function addItemsToIcoMenu() {
 	// 	}
 	// );
 }
-function createPoiDiv(num, index) {
-	let poiDiv = createEle('div', 'poi poi_' + num)
+function createPoiDiv(index) {
+	let poiDiv = createEle('div', 'poi poi_' + index.id)
 	poiDiv.title = index.name
 	poiDiv.style.left = (index.pos.x - icosize) + 'px'
 	poiDiv.style.bottom = (index.pos.y - icosize) + 'px'
@@ -144,19 +178,18 @@ function createMapItem(num, index) {
 		return mapItem
 	}
 }
-function createPoiItem(num, index) {
-	if (num < 0) {
+function createPoiItem(iter, index) {
+	if (iter < 0) {
 		let poiItem = createEle('div', 'poititle')
 		poiItem.title = 'Poi Liste'
 		poiItem.textContent = 'Poi'
 		return poiItem
 	} else {
-		index.id = num
-		let poiItem = createEle('div', 'poiitem _' + num)
+		let poiItem = createEle('div', 'poiitem _' + index.id)
 		poiItem.title = index.name
-		poiItem.textContent = index.name
+		poiItem.textContent = '(' + index.id + ') ' + index.name
 		poiItem.addEventListener('click', () => {
-			console.log(index.name, num)
+			console.log(index.name, index.id)
 		})
 		return poiItem
 	}
@@ -170,6 +203,7 @@ function createTypeItem(num, index) {
 	} else {
 		let item = createEle('div', 'typeitem _' + num)
 		item.title = index.name
+
 		let ico = RuneTellerDatas.ico[index.ico].ico
 		item.textContent = num + '=' + index.name + ' ' + ico
 		return item
@@ -234,6 +268,9 @@ function init() {
 
 	document.getElementById('update').addEventListener('click', () => {
 		formUpdate()
+	})
+	document.getElementById('delete').addEventListener('click', () => {
+		formDelete()
 	})
 
 }

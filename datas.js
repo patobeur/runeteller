@@ -1,6 +1,6 @@
 
 let datas = {
-	v: 1,
+	v: 0,
 	types: [
 		{ name: "Tower", ico: 'tower' },
 		{ name: "Npc", ico: 'npc' },
@@ -40,49 +40,62 @@ let datas = {
 		fauna: { ico: '🐻', name: 'Bear' },
 		flora: { ico: '🌼', name: 'Blossom' },
 		fish: { ico: '🐟', name: 'Fish' },
-		chest: { ico: '🧰', name: 'Toolbox' },
-
+		chest: { ico: '🧰', name: 'Toolbox' }
 	},
 	maps: [
 		{
 			id: 0,
-			name: 'Darkess Village',
-			width: 1450, height: 1195,
-			src: 'darkess_village.jpg',
-			alt: "Darkess Village"
+			name: 'Eastern Valley',
+			width: 1450,
+			height: 1195,
+			src: 'eastern_valley.jpg',
+			alt: "Eastern Valley",
+			spoil: false
 		},
 		{
 			id: 1,
-			name: 'Central Mountains',
+			name: 'Central Mountains Area',
 			width: 1450, height: 1195,
-			src: 'central_mountains.jpg',
-			alt: "Central Mountains"
+			src: 'central_mountains_area.jpg',
+			alt: "Central Mountains Area",
+			spoil: false
 		},
 		{
 			id: 2,
-			name: 'Dyra Desert',
+			name: 'Chaplonia',
 			width: 1450, height: 1195,
-			src: 'dyra_desert.jpg',
-			alt: "Dyra Desert"
+			src: 'chaplonia.jpg',
+			alt: "Chaplonia",
+			spoil: false
 		},
 		{
 			id: 3,
-			name: 'Champlonia',
+			name: 'King\'s Mountain',
 			width: 1450, height: 1195,
-			src: 'champlonia.jpg',
-			alt: "Champlonia"
+			src: 'king_s_mountain.jpg',
+			alt: 'King\'s Mountain',
+			spoil: false
 		},
 		{
 			id: 4,
-			name: 'King Mountains',
+			name: 'Dyra Desert',
 			width: 1450, height: 1195,
-			src: 'king_mountains.jpg',
-			alt: "King Mountains"
+			src: 'dyra_desert.jpg',
+			alt: "Dyra Desert",
+			spoil: false
+		},
+		{
+			id: 5,
+			name: 'The Frozen Elve\'s Forest',
+			width: 1450, height: 1195,
+			src: 'the_frozen_elves_forest.jpg',
+			alt: 'The Frozen Elve\'s Forest',
+			spoil: false
 		}
 	],
 	poi: [
 		{
-			mapid: 2,
+			mapid: 4,
 			type: 1,
 			pos: { x: 482, y: 801, z: 0 },
 			name: "Black Knight",
@@ -90,6 +103,23 @@ let datas = {
 			shop: true,
 			quest: true
 		},
-		{ mapid: 2, type: "11", "pos": { "x": "870", "y": "766", "z": 0 }, "name": "Fairy", "comment": "give me a Doll", "shop": false, "quest": false, "typeName": { "name": "Fairy", "ico": "fairy" }, "mapName": "Dyra Desert" },
+		{
+			mapid: 2,
+			type: 11,
+			pos: { x: 870, y: 766, z: 0 },
+			name: 'Fairy',
+			comment: 'give me a Doll',
+			shop: false,
+			quest: false,
+		},
+		{
+			"mapid": 4,
+			"type": "5",
+			"pos": { "x": "549", "y": "651", "z": "0" },
+			"name": "Desert Ruins",
+			"comment": "Entrance !",
+			"shop": false,
+			"quest": false,
+		}
 	],
 }
