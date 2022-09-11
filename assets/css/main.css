@@ -1,0 +1,169 @@
+
+:root {
+	--hnav: 33px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: box-sizing;
+}
+
+body {
+	background-color: black;
+}
+
+#world {
+	background-color: rgb(74, 74, 74);
+}
+
+#menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: var(--hnav);
+	background-color: black;
+	color: white;
+
+	display: flex;
+	justify-content: flex-start;
+}
+
+#menu-maps,
+#menu-poi,
+#menu-type,
+#menu-ico {
+	width: 80px;
+	height: var(--hnav);
+	background-color: black;
+	color: white;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border:1px solid red;
+	white-space: nowrap;
+}
+
+#menu-poi:hover>.poiitem,
+#menu-maps:hover>.mapitem,
+#menu-type:hover>.typeitem,
+#menu-ico:hover>.icoitem {
+	width: max-content;
+	background-color: rgb(111, 9, 9);
+	display: block;
+}
+
+#menu-poi .poiitem,
+#menu-maps .mapitem,
+#menu-type .typeitem,
+#menu-ico .icoitem {
+	display: none;
+}
+
+.maptitle,
+.poititle,
+.typetitle,
+.icotitle {
+	width: min-content;
+	height: var(--hnav);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 5px;
+
+}
+
+#menu-poi #pois {
+	position: relative;
+	width: max-content;
+	background-color: rgb(161, 38, 38);
+	color: white;
+}
+
+.poiitem {
+	width: 100%;
+	background-color: rgb(38, 161, 56);
+	color: white;
+	padding: 5px;
+}
+
+#map {
+	position: relative;
+}
+
+.poi {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	/* background-color: rgba(255, 255, 255, 0.34);*/
+	border: 1px solid rgba(0, 0, 0, 0.204);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+/* .poi::before {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: rgba(47, 171, 36, 0.34);
+	content: " ";
+}
+
+.poi::after {
+	position: absolute;
+	content: "?";
+	top: -20px;
+	background-color: rgba(208, 204, 22, 0.34);
+} */
+
+#board {
+	position: absolute;
+	width: 200px;
+	/* height: 200px; */
+	top: 30px;
+	right: 0px;
+	background-color: rgba(255, 255, 255, 0.941);
+	border-radius: .5rem;
+	padding: .5rem;
+}
+
+#poitools {
+	background-color: rgba(185, 255, 183, 0.941);
+	border-radius: .5rem;
+	padding: .5rem;
+
+}
+
+#mapinfo {
+	background-color: rgba(247, 255, 213, 0.941);
+	border-radius: .5rem;
+	padding: .5rem;
+	/* height: 1rem; */
+
+}
+.mapinfoitems {
+	display: none;
+}
+#mapinfo:hover .mapinfoitems {
+	display: block;
+}
+
+.fourdigit {
+	width: 4rem;
+}
+
+#JsonTextarea {
+	width: 100%;
+	height: 200px
+}
+button{
+	cursor: grab;
+}
