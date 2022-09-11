@@ -2,6 +2,7 @@
 function formPoiDelete() {
 	// console.log(document.getElementById('poicomment').value)
 	document.getElementById('poidelete').style.display = 'none'
+	document.getElementById('poiupdate').style.display = 'none'
 	let id = document.getElementById('poiid').value
 	console.log('typeof id', typeof id)
 	console.log(RuneTellerDatas.poi)
@@ -24,7 +25,7 @@ function createMapImg() {
 	let img = document.createElement('img')
 	if (currentMap >= 0 && currentMap < RuneTellerDatas.maps.length) {
 		let actualMap = RuneTellerDatas.maps[currentMap]
-		img.src = MapImagePath + (!spoil ? 'nospoil.jpg' : actualMap.src)
+		img.src = MapImagePath + (!actualMap.spoil ? 's_' : '') + actualMap.src;
 		img.height = actualMap.height
 		img.width = actualMap.width
 		// map form  refreshcurrentMap
@@ -65,11 +66,11 @@ function addMapListener(img) {
 		StorageRefresh()
 		displayMapAndMenus()
 		displayPoiStuff()
-		console.log('adding new poi id:', nextId)
-		console.table(newPoi)
+		console.log('adding new poi id:', nextId, newPoi)
 	})
 }
 function formPoiRefresh(id, index) {
+	document.getElementById('poitoolsitems').style.display = 'block'
 	document.getElementById('poiname').value = index.name
 	document.getElementById('poiposx').value = index.pos.x
 	document.getElementById('poiposy').value = index.pos.y
@@ -79,25 +80,21 @@ function formPoiRefresh(id, index) {
 	document.getElementById('poiid').value = id
 	document.getElementById('poicomment').value = index.comment
 	document.getElementById('poitype').value = index.type
+	document.getElementById('poiupdate').style.display = ''
 	document.getElementById('poidelete').style.display = ''
 }
-function formMapUpdmmate() {
-	// console.log(document.getElementById('poicomment').value)
-	let id = currentMap
-	let newMap = {
-		type: document.getElementById('poitype').value,
-		pos: {
-			x: document.getElementById('poiposx').value,
-			y: document.getElementById('poiposy').value,
-			z: document.getElementById('poiposz').value
-		},
-		name: document.getElementById('poiname').value,
-		comment: document.getElementById('poicomment').value,
-		shop: document.getElementById('poishop').checked,
-		quest: document.getElementById('poiquest').checked
+function formMapUpdate() {
+	RuneTellerDatas.maps[currentMap] = {
+		gameid: currentGame,
+		id: currentMap,
+		name: document.getElementById('mapname').value,
+		width: document.getElementById('mapwidth').value,
+		height: document.getElementById('mapheight').value,
+		src: document.getElementById('mapsrc').value,
+		alt: document.getElementById('mapalt').value,
+		spoil: document.getElementById('mapspoil').checked
 	}
-	RuneTellerDatas.poi[id] = newPoi
-	console.log('newPoi', newPoi)
+
 	StorageRefresh()
 	displayMapAndMenus()
 	displayPoiStuff()
@@ -119,6 +116,7 @@ function formPoiUpdate() {
 		shop: document.getElementById('poishop').checked,
 		quest: document.getElementById('poiquest').checked
 	}
+	document.getElementById('poitoolsitems').style.display = 'none'
 	RuneTellerDatas.poi[id] = newPoi
 	// console.log('update', newPoi)
 	StorageRefresh()
@@ -288,12 +286,17 @@ function init() {
 
 	displayMapAndMenus()
 	displayPoiStuff()
+	document.getElementById('poiupdate').style.display = 'none'
+	document.getElementById('poidelete').style.display = 'none'
 
 	document.getElementById('poiupdate').addEventListener('click', () => {
 		formPoiUpdate()
 	})
 	document.getElementById('poidelete').addEventListener('click', () => {
 		formPoiDelete()
+	})
+	document.getElementById('mapupdate').addEventListener('click', () => {
+		formMapUpdate()
 	})
 
 }

@@ -1,6 +1,6 @@
 
 let datas = {
-	v: 999999,
+	v: 0,
 	types: [
 		{ name: "Tower", ico: 'tower' },
 		{ name: "Npc", ico: 'npc' },
@@ -58,7 +58,7 @@ let datas = {
 			width: 1450, height: 1195,
 			src: 'central_mountains_area.jpg',
 			alt: "Central Mountains Area",
-			spoil: false
+			spoil: true
 		},
 		{
 			id: 2,
@@ -66,7 +66,7 @@ let datas = {
 			width: 1450, height: 1195,
 			src: 'chaplonia.jpg',
 			alt: "Chaplonia",
-			spoil: false
+			spoil: true
 		},
 		{
 			id: 3,
@@ -74,7 +74,7 @@ let datas = {
 			width: 1450, height: 1195,
 			src: 'king_s_mountain.jpg',
 			alt: 'King\'s Mountain',
-			spoil: false
+			spoil: true
 		},
 		{
 			id: 4,
@@ -82,7 +82,7 @@ let datas = {
 			width: 1450, height: 1195,
 			src: 'dyra_desert.jpg',
 			alt: "Dyra Desert",
-			spoil: false
+			spoil: true
 		},
 		{
 			id: 5,
@@ -90,36 +90,18 @@ let datas = {
 			width: 1450, height: 1195,
 			src: 'the_frozen_elves_forest.jpg',
 			alt: 'The Frozen Elve\'s Forest',
-			spoil: false
+			spoil: true
 		}
 	],
 	poi: [
 		{
-			mapid: 4,
+			mapid: 0,
 			type: 1,
-			pos: { x: 482, y: 801, z: 0 },
-			name: "Black Knight",
-			comment: 'A lonely Knight in the middle of heat',
-			shop: true,
-			quest: true
-		},
-		{
-			mapid: 2,
-			type: 11,
-			pos: { x: 870, y: 766, z: 0 },
-			name: 'Fairy',
-			comment: 'give me a Doll',
+			pos: { x: 299, y: 741, z: 0 },
+			name: 'Birth  Point ;)',
+			comment: 'Here you go !',
 			shop: false,
-			quest: false,
-		},
-		{
-			mapid: 4,
-			type: 5,
-			pos: { x: 549, y: 651, z: 0 },
-			name: 'Desert Ruins',
-			comment: 'Entrance !',
-			shop: false,
-			quest: false,
+			quest: false
 		}
 	],
 }
