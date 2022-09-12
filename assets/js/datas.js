@@ -40,7 +40,13 @@ let datas = {
 		fauna: { ico: '🐻', name: 'Bear' },
 		flora: { ico: '🌼', name: 'Blossom' },
 		fish: { ico: '🐟', name: 'Fish' },
-		chest: { ico: '🧰', name: 'Toolbox' }
+		chest: { ico: '🧰', name: 'Toolbox' },
+		chest: { ico: '🧰', name: 'Toolbox' },
+		worldmap: { ico: '🗺️', name: 'World Map' },
+		Bed: { ico: '🛏️', name: 'Bed' },
+		skull: { ico: '💀', name: 'Skull' },
+		skullandcrossbones: { ico: '☠️', name: 'Skull and Crossbones' },
+		pirateflag: { ico: '🏴‍☠️', name: 'Pirate Flag' },
 	},
 	maps: [
 		{

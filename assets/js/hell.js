@@ -141,7 +141,7 @@ function addItemsToPoiMenu() {
 			iter++
 		}
 	);
-	document.getElementById('poititle').textContent = ' Poi (' + localPoi + '/' + iter + ')'
+	document.getElementById('poititle').textContent = '📌Poi (' + localPoi + '/' + iter + ')'
 }
 function addItemsToTypeMenu() {
 	let iter = 0;
@@ -186,12 +186,12 @@ function createMapItem(num, index) {
 	if (num < 0) {
 		let mapItem = createEle('div', 'maptitle')
 		mapItem.title = 'Map Liste'
-		mapItem.textContent = 'Maps'
+		mapItem.textContent = '📜Maps'
 		return mapItem
 	} else {
 		let mapItem = createEle('div', 'mapitem _' + num)
 		mapItem.title = index.name
-		mapItem.textContent = index.name + ' [' + index.id + ']'
+		mapItem.textContent = '[' + index.id + '] ' + index.name
 		mapItem.addEventListener('click', () => {
 			currentMap = index.id
 			displayMapAndMenus()
@@ -210,10 +210,10 @@ function createPoiItem(iter, index) {
 	} else {
 		let poiItem = createEle('div', 'poiitem _' + index.id)
 		poiItem.title = index.name
-		poiItem.textContent = '(' + index.id + ') ' + index.name
-		poiItem.addEventListener('click', () => {
-			console.log(index.name, index.id)
-		})
+		poiItem.textContent = '(' + iter + ') ' + index.name
+		// poiItem.addEventListener('click', () => {
+		// 	console.log(index.name, index.id)
+		// })
 		return poiItem
 	}
 }
@@ -228,7 +228,7 @@ function createTypeItem(num, index) {
 		item.title = index.name
 
 		let ico = RuneTellerDatas.ico[index.ico].ico
-		item.textContent = num + '=' + index.name + ' ' + ico
+		item.textContent = ico + ' ' + index.name + ' =' + num
 		return item
 	}
 }
