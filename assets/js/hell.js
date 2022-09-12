@@ -23,8 +23,8 @@ function formPoiDelete() {
 }
 function createMapImg() {
 	let img = document.createElement('img')
-	if (currentMap >= 0 && currentMap < RuneTellerDatas.maps.length) {
-		let actualMap = RuneTellerDatas.maps[currentMap]
+	if (currentMap >= 0 && currentMap < config.maps.length) {
+		let actualMap = config.maps[currentMap]
 		img.src = MapImagePath + (!actualMap.spoil ? 's_' : '') + actualMap.src;
 		img.height = actualMap.height
 		img.width = actualMap.width
@@ -42,7 +42,7 @@ function createMapImg() {
 }
 function addMapListener(img) {
 	img.addEventListener('click', (e) => {
-		let actualMap = RuneTellerDatas.maps[currentMap]
+		let actualMap = config.maps[currentMap]
 		let nextId = RuneTellerDatas.poi.length
 		let h = actualMap.height
 		let w = actualMap.width
@@ -84,7 +84,7 @@ function formPoiRefresh(id, index) {
 	document.getElementById('poidelete').style.display = ''
 }
 function formMapUpdate() {
-	RuneTellerDatas.maps[currentMap] = {
+	config.maps[currentMap] = {
 		gameid: currentGame,
 		id: currentMap,
 		name: document.getElementById('mapname').value,
@@ -131,8 +131,6 @@ function addItemsToPoiMenu() {
 		poi => {
 			// poi.id = iter
 			if (poi.mapid === currentMap) {
-				// poi.typeName = RuneTellerDatas.types[poi.type]
-				// poi.mapName = RuneTellerDatas.maps[poi.mapid].name
 				let item = createPoiDiv(iter, poi)
 				Map.appendChild(item)
 				localPoi++
@@ -145,19 +143,19 @@ function addItemsToPoiMenu() {
 }
 function addItemsToTypeMenu() {
 	let iter = 0;
-	for (var type in RuneTellerDatas.types) {
-		MenuType.appendChild(createTypeItem(iter, RuneTellerDatas.types[type]))
+	for (var type in config.types) {
+		MenuType.appendChild(createTypeItem(iter, config.types[type]))
 		iter++
 	}
 }
 function addItemsToIcoMenu() {
 	let iter = 0;
-	for (var ico in RuneTellerDatas.ico) {
-		MenuIco.appendChild(createIcoItem(iter, RuneTellerDatas.ico[ico]))
+	for (var ico in config.ico) {
+		MenuIco.appendChild(createIcoItem(iter, config.ico[ico]))
 		iter++
 
 	}
-	// RuneTellerDatas.ico.forEach(
+	// config.ico.forEach(
 	// 	ico => {
 	// 		MenuIco.appendChild(createIcoItem(iter, ico))
 	// 		iter++
@@ -169,8 +167,8 @@ function createPoiDiv(iter, index) {
 	poiDiv.title = index.name
 	poiDiv.style.left = (index.pos.x - icosize) + 'px'
 	poiDiv.style.bottom = (index.pos.y - icosize) + 'px'
-	let type = RuneTellerDatas.types[index.type].ico
-	poiDiv.textContent = RuneTellerDatas.ico[type].ico
+	let type = config.types[index.type].ico
+	poiDiv.textContent = config.ico[type].ico
 
 	poiDiv.addEventListener('click', () => {
 		formPoiRefresh(iter, index)
@@ -227,7 +225,7 @@ function createTypeItem(num, index) {
 		let item = createEle('div', 'typeitem _' + num)
 		item.title = index.name
 
-		let ico = RuneTellerDatas.ico[index.ico].ico
+		let ico = config.ico[index.ico].ico
 		item.textContent = ico + ' ' + index.name + ' =' + num
 		return item
 	}
@@ -252,7 +250,7 @@ function createEle(tag = 'div', name = false, type = false) {
 }
 function addItemsToMapsMenu() {
 	let iter = 0
-	RuneTellerDatas.maps.forEach(
+	config.maps.forEach(
 		map => {
 			MenuMaps.appendChild(createMapItem(iter, map))
 			iter++
@@ -265,7 +263,7 @@ function StorageDealer() {
 		localStorage.setItem('RuneTellerDatas', JSON.stringify(datas));
 		RuneTellerDatas = JSON.parse(localStorage.getItem('RuneTellerDatas'))
 	}
-	JsonTextarea.textContent = 'let datas = ' + localStorage.getItem('RuneTellerDatas')
+	JsonTextarea.textContent = localStorage.getItem('RuneTellerDatas')
 }
 function StorageRefresh() {
 	RuneTellerDatas.v++
