@@ -41,7 +41,6 @@ let datas = {
 		flora: { ico: '🌼', name: 'Blossom' },
 		fish: { ico: '🐟', name: 'Fish' },
 		chest: { ico: '🧰', name: 'Toolbox' },
-		chest: { ico: '🧰', name: 'Toolbox' },
 		worldmap: { ico: '🗺️', name: 'World Map' },
 		Bed: { ico: '🛏️', name: 'Bed' },
 		skull: { ico: '💀', name: 'Skull' },
