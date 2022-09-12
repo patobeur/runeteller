@@ -1,6 +1,7 @@
 
 function formPoiDelete() {
 	// console.log(document.getElementById('poicomment').value)
+	document.getElementById('poitoolsitems').style.display = 'none'
 	document.getElementById('poidelete').style.display = 'none'
 	document.getElementById('poiupdate').style.display = 'none'
 	let id = document.getElementById('poiid').value
