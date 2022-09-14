@@ -124,7 +124,7 @@ body {
 } */
 
 #board {
-	position: absolute;
+	position: fixed;
 	width: 200px;
 	/* height: 200px; */
 	top: 30px;
