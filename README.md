@@ -45,3 +45,7 @@ data.js 파일에 데이터가 있습니다
 지금 내가 쓴 코드는 엉망이거나 읽을 수 없으므로 자유롭게 기여하십시오;)
 
 즐기세요!
+
+all maps pictures are from Rune_Teller game ;)
+https://store.steampowered.com/curator/42213394
+check for more fun ;) 

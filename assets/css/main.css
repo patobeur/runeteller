@@ -176,3 +176,37 @@ button{
 	padding:.2rem .5rem;
 	width:200px;
 }
+
+#info {
+  position: fixed;
+  display: flex;
+  right: 5px;
+  bottom: 5px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding: 3px;
+  /* border: 1px solid white; */
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.694);
+}
+
+.octicon {
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: black;
+}
+
+.github,
+.github a:hover,
+.github a:active,
+.github a {
+  color: black;
+}
