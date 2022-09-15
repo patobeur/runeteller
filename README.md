@@ -1,5 +1,7 @@
 # My runeteller isreach ?
 Stuff in case it's ok !
+try it here : https://patobeur.github.io/runetellerisreach
+
 
 This may be an easy way to store/save your game journey on a map.
 Choose a map by clicking in the map list menu,
