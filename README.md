@@ -49,3 +49,6 @@ data.js 파일에 데이터가 있습니다
 all maps pictures are from Rune_Teller game ;)
 https://store.steampowered.com/curator/42213394
 check for more fun ;) 
+
+add poi : 
+![image](https://patobeur.github.io/runetellerisreach/tuto/exemple_tuto.gif)
